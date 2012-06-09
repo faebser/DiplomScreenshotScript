@@ -3,12 +3,27 @@ Fabian Frei // fabian.frei@yhperwerk.ch
 */
 $(document).ready(function(){
 	
-	//do all the resizing stuff :)
+	//do all the resizing stuff :) // 131:24
+	var gif = $('#gif');
+	var topPic = $('#topPic');
+	var leftPic = $('#leftPic');
+	var upperWrapperWidth = $('#topPicsWrapper').outerWidth()-4*(parseInt(topPic.css('marginLeft')));
+	var upperPicturesHeight = parseInt(upperWrapperWidth/131*24);
 	
+	gif.css('height', upperPicturesHeight);
+	topPic.css('height', upperPicturesHeight);
+	leftPic.css('width', gif.width());
+	$('#leftPicLink').css('width', gif.width() + parseInt(leftPic.css('marginLeft'))*2);
+	$('#contentWrapper').css('width', $(window).width() - $('#leftPicLink').width());
+	$('#content').css('width', $('#contentWrapper').width() - parseInt($('#content').css('marginLeft')*2));
 	
-	var backgroundImgSize = 90;
-	var backgroundImg = new PNGlib(backgroundImgSize, backgroundImgSize, 256); // construcor takes height, weight and color-depth
-	var background = backgroundImg.color(0, 0, 0, 0); // set the background transparent
+	$('#gifOverlay').css({'height':gif.height(), 'width':gif.width()});
+	$('#topPicOverlay').css({'height':topPic.height(), 'width':topPic.width()});
+	$('#leftPicOverlay').css({'height':leftPic.height(), 'width':leftPic.width()});
+	
+	var backgroundImgSize = 10;
+	var backgroundImg = new PNGlib(backgroundImgSize, backgroundImgSize, 256); // constructor takes height, weight and color-depth
+	//var background = backgroundImg.color(0, 0, 0, 0); // set the background transparent
 
 	//fill the img with grey pixels
 	for(var y = 0; y < backgroundImgSize; y++) {
