@@ -2,24 +2,10 @@
 Fabian Frei // fabian.frei@yhperwerk.ch
 */
 $(document).ready(function(){
-	
-	//do all the resizing stuff :) // 131:24
-	var gif = $('#gif');
-	var topPic = $('#topPic');
-	var leftPic = $('#leftPic');
-	var upperWrapperWidth = $('#topPicsWrapper').outerWidth()-4*(parseInt(topPic.css('marginLeft')));
-	var upperPicturesHeight = parseInt(upperWrapperWidth/131*24);
-	
-	gif.css('height', upperPicturesHeight);
-	topPic.css('height', upperPicturesHeight);
-	leftPic.css('width', gif.width());
-	$('#leftPicLink').css('width', gif.width() + parseInt(leftPic.css('marginLeft'))*2);
-	$('#contentWrapper').css('width', $(window).width() - $('#leftPicLink').width());
-	$('#content').css('width', $('#contentWrapper').width() - parseInt($('#content').css('marginLeft')*2));
-	
-	$('#gifOverlay').css({'height':gif.height(), 'width':gif.width()});
-	$('#topPicOverlay').css({'height':topPic.height(), 'width':topPic.width()});
-	$('#leftPicOverlay').css({'height':leftPic.height(), 'width':leftPic.width()});
+	//var topWrapper, left, wrapper, content;
+	$.images();
+	resize();
+	$.images('bindEvents');
 	
 	var backgroundImgSize = 10;
 	var backgroundImg = new PNGlib(backgroundImgSize, backgroundImgSize, 256); // constructor takes height, weight and color-depth
@@ -33,4 +19,8 @@ $(document).ready(function(){
 		}
 	}
 	$('body').css('backgroundImage','url("data:image/png;base64,'+backgroundImg.getBase64()+'")');
+});
+
+$(window).resize(function() {
+	resize();
 });

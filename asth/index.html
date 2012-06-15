@@ -34,38 +34,70 @@
     <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
     <!-- Add your site or application content here -->
+    <div id="bigOverlay">
+    	<img id="fullscreenImg" src="" alt="fullscreen" />
+    </div>
     <section id="topBar"></section>
-    <div id="topPicsWrapper" class="clearfix">
-    	<div id="gifLink" class="picLink">
-    		<div class="overlay" id="gifOverlay"></div>
-	    	<img id="gif" src="../bf3/bf3.gif" />
+    <div id="outerWrapper" class="clearfix">
+	    <div id="topPicsWrapper" class="clearfix">
+	    	<div id="gifLink" class="picLink">
+	    		<div class="overlay" id="gifOverlay">
+		    		<div class="fullscreenIconWrapper iconWrapper">
+		    			<img src="img/fullscreen.png" alt="fullscreen" class="icon fullscreen"/>
+		    			<span class="hint">Vollbild</span>
+		    		</div>
+		    		<div class="addToIconWrapper iconWrapper">
+		    			<img src="img/plus.png" alt="addTo" class="icon addTo"/>
+		    			<span class="hint">zum Vergleich hinzuf&uuml;gen</span>
+		    		</div>
+	    		</div>
+		    	<img id="gif" class="bigPicture" src="../bf3/bf3.gif" data-height="540" data-width="960"/>
+		    </div>
+		    <div id="topPicLink" class="picLink">
+		    	<div class="overlay" id="topPicOverlay">
+			    	<div class="fullscreenIconWrapper iconWrapper">
+		    			<img src="img/fullscreen.png" alt="fullscreen" class="icon fullscreen"/>
+		    			<span class="hint">Vollbild</span>
+		    		</div>
+		    		<div class="addToIconWrapper iconWrapper">
+		    			<img src="img/plus.png" alt="addTo" class="icon addTo"/>
+		    			<span class="hint">zum Vergleich hinzuf&uuml;gen</span>
+		    		</div>
+		    	</div>
+		    	<img id="topPic" class="bigPicture" src="../bf3/strip-horizontal.png" data-height="261" data-width="960"/>
+		    </div>
 	    </div>
-	    <div id="topPicLink" class="picLink">
-	    	<div class="overlay" id="topPicOverlay"></div>
-	    	<img id="topPic" src="../bf3/strip-horizontal.png" />
+	    <div id="leftPicLink" class="picLink">
+	    	<div class="overlay" id="leftPicOverlay">
+	    		<div class="fullscreenIconWrapper iconWrapper">
+	    			<img src="img/fullscreen.png" alt="fullscreen" class="icon fullscreen"/>
+	    			<span class="hint">Vollbild</span>
+	    		</div>
+	    		<div class="addToIconWrapper iconWrapper">
+	    			<img src="img/plus.png" alt="addTo" class="icon addTo"/>
+	    			<span class="hint">zum Vergleich hinzuf&uuml;gen</span>
+	    		</div>
+	    	</div>
+	    	<img id="leftPic" class="bigPicture" src="../bf3/strip-vertical.png" data-height="540" data-width="261"/>
 	    </div>
-    </div>
-    <div id="leftPicLink" class="picLink">
-    	<div class="overlay" id="leftPicOverlay"></div>
-    	<img id="leftPic" src="../bf3/strip-vertical.png" />
-    </div>
-    <div id="contentWrapper">
-    	<section id="content">
-    		<h1>Battlefield 3<span> &mdash; Ego-Shooter EA 2011</span></h1>
-    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
-    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
-    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
-    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
-    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
-    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
-    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
-    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
-    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-    	</section>
-    	<section id="footer"></section>
+	    <div id="contentWrapper">
+	    	<section id="content">
+	    		<h1>Battlefield 3<span> &mdash; Ego-Shooter EA 2011</span></h1>
+	    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+	    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+	    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+	    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+	    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+	    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+	    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+	    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+	    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+	    		<p>Dolor sit &auml;met, cDonsectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+	    		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </p>
+	    		<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+	    	</section>
+	    	<section id="footer"></section>
+	    </div>
     </div>
 
 
