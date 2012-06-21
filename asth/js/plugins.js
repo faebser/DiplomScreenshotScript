@@ -800,8 +800,10 @@ var topWrapper, left, wrapper, content;
 				orgWidth: jQueryObject.data('width'),
 				fullscreen: jQueryObject.parent().find('.icon.fullscreen'),
 				addTo: jQueryObject.parent().find('.icon.addTo'),
+				openCompare: jQueryObject.parent().find('.icon.openCompare'),
 				fuHint: jQueryObject.parent().find('.fullscreenIconWrapper .hint'),
 				aTHint: jQueryObject.parent().find('.addToIconWrapper .hint'),
+				oCHint: jQueryObject.parent().find('.openCompareWrapper .hint'),
 				setOverlay: function() {
 					this.overlay.css({ height: this.me.css('height'), width: this.me.css('width') })
 				},
@@ -826,11 +828,18 @@ var topWrapper, left, wrapper, content;
 						slices : oneImage($('#topPicsWrapper #topPic'))
 				};
 				wrapper = $('#outerWrapper');
+				innerWrapper = $('#innerWrapper');
 				content = $('#contentWrapper');
-				$.cookie('top', JSON.stringify(Array()));
-				console.log($.cookie('top'));
-				$.cookie('left', JSON.stringify({images : []} ));
-				$.cookie('gif', JSON.stringify({images : []} ));
+				footer = $('#footer');
+				if($.cookie('topPic') == null) {
+					$.cookie('topPic', "[]");
+				}
+				if($.cookie('leftPic') == null) {
+					$.cookie('leftPic', "[]");
+				} 
+				if($.cookie('gif') == null) {
+					$.cookie('gif', "[]");
+				}
 			},
 			bindEvents: function() {
 				$('.icon.fullscreen').click(function(e) {
@@ -839,7 +848,6 @@ var topWrapper, left, wrapper, content;
 					var src = $(this).parents('.picLink').find('.bigPicture').attr('src');
 					var width = $(this).parents('.picLink').find('.bigPicture').data('width');
 					var height = $(this).parents('.picLink').find('.bigPicture').data('height');
-					$('#bigOverlay').css('height', $(document).height());
 					$('#bigOverlay #fullscreenImg').attr({
 						'src' : src,
 						'width' : width,
@@ -854,24 +862,25 @@ var topWrapper, left, wrapper, content;
 				$('.icon.addTo').click(function(e) {
 					e.preventDefault();
 					var pic = $(this).parents('.picLink').find('.bigPicture');
-					console.log($(this).parent());
-					if(pic.attr('id') == 'gif') {
-						var json = JSON.parse($.cookie('gif')).images;
+					var json = Array();
+					json = JSON.parse($.cookie(pic.attr('id')));
+					if(json.length < 4) {
+						json.unshift(pic.attr('src'));
 					}
-					else if(pic.attr('id') == 'topPic') {
-						var json = JSON.parse($.cookie('top')).images;
+					else {
+						json.splice(3,1);
+						json.unshift(pic.attr('src'));
 					}
-					else if(pic.attr('id') == 'leftPic') {
-						var json = JSON.parse($.cookie('left')).images;
-					}
+					$.cookie(pic.attr('id'),JSON.stringify(json));
+					console.log($.cookie(pic.attr('id')));
 					//read json from cookie and put it back
-					console.log(json);
-					
-					console.log('addTo');
 				});
 				$('#bigOverlay').click(function() {
 					$(this).fadeOut();
-				})
+				});
+				$('.openCompare').click(function(event) {
+					event.preventDefault();
+				});
 			}
 	};
 	$.images = function(method) {
@@ -889,6 +898,7 @@ function resize() {
 	if($(window).width()-70 > content.outerWidth(true) + left.image.orgWidth) { // big window
 		left.image.me.css('width', left.image.orgWidth);
 		wrapper.css('width', content.outerWidth(true) + left.image.me.outerWidth(true));
+		footer.css('width', wrapper.css('width'));
 		topWrapper.gif.me.css('width', left.image.me.css('width'));
 		topWrapper.slices.me.css('height', topWrapper.gif.me.css('height'));
 		topWrapper.me.css('width', topWrapper.gif.me.outerWidth(true) + topWrapper.slices.me.outerWidth(true));
