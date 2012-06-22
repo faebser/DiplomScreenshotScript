@@ -851,8 +851,8 @@ var topWrapper, left, wrapper, content;
 					$('#bigOverlay #fullscreenImg').attr({
 						'src' : src,
 						'width' : width,
-						'height' : height
-						});
+						'height' : height,
+						}).show();
 					$('#fullscreenImg').css({
 						top: ($(window).height() - height)/2,
 						left: ($(window).width() - width)/2
@@ -861,7 +861,7 @@ var topWrapper, left, wrapper, content;
 				});
 				$('.icon.addTo').click(function(e) {
 					e.preventDefault();
-					var pic = $(this).parents('.picLink').find('.bigPicture');
+					var pic = $(this).parents('.picLink').addClass('comparing').find('.bigPicture');
 					var json = Array();
 					json = JSON.parse($.cookie(pic.attr('id')));
 					if(json.length < 4) {
@@ -872,10 +872,23 @@ var topWrapper, left, wrapper, content;
 						json.unshift(pic.attr('src'));
 					}
 					$.cookie(pic.attr('id'),JSON.stringify(json));
-					console.log($.cookie(pic.attr('id')));
+					// TODO add compare open button and remove this shit
+					if(json.length > 1) {
+						// show them pictures
+						var cWrapper = $('#compareWrapper');
+						cWrapper.css({width: wrapper.css('width'), height: $(window).height()});
+						for ( var int = 0; int < json.length; int++) {
+							cWrapper.append('<img src="'+json[int]+'" />');
+						}
+						$('#fullscreenImg').hide();
+						$('#bigOverlay').fadeIn();
+					}
 					//read json from cookie and put it back
 				});
 				$('#bigOverlay').click(function() {
+					if( $(this).find('#compareWrapper').children().length > 0) {
+						$(this).find('#compareWrapper').empty();
+					}
 					$(this).fadeOut();
 				});
 				$('.openCompare').click(function(event) {
